@@ -14,7 +14,7 @@ describe('get object test', () => {
     dlm.get(['title']).from(originObject).to(newObject);
     expect(newObject.title).toBe("hello");
   });
-  
+
   it('should return correct object', () => {
     let dlm = new DLM();
     var originObject = {
@@ -27,5 +27,20 @@ describe('get object test', () => {
     dlm.get(['title', 'author']).from(originObject).to(newObject);
     expect(newObject.title).toBe("hello");
     expect(newObject.author).toBe("phodal");
+  });
+
+  it('should return all objects when get array empty', () => {
+    let dlm = new DLM();
+    var originObject = {
+      title: 'hello',
+      blog: 'fdsf asdf fadsf ',
+      author: 'phodal'
+    };
+
+    var newObject = {};
+    dlm.get().from(originObject).to(newObject);
+    expect(newObject.title).toBe("hello");
+    expect(newObject.author).toBe("phodal");
+    expect(newObject.blog).toBe("fdsf asdf fadsf ");
   });
 });
