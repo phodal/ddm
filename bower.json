@@ -1,6 +1,6 @@
 {
-  "name": "2m",
-  "description": "Double Model",
+  "name": "ddm",
+  "description": "Domain Double Model",
   "main": "index.js",
   "authors": [
     "Phodal"
@@ -13,7 +13,7 @@
     "design",
     "double"
   ],
-  "homepage": "https://github.com/phodal/2m",
+  "homepage": "https://github.com/phodal/ddm",
   "ignore": [
     "**/.*",
     "node_modules",

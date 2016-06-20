@@ -1,14 +1,14 @@
 {
-  "name": "2m",
+  "name": "ddm",
   "version": "0.0.1",
-  "description": "Double Model",
+  "description": "Domain Double Model",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/phodal/2m.git"
+    "url": "git+https://github.com/phodal/ddm.git"
   },
   "keywords": [
     "Model",
@@ -20,7 +20,7 @@
   "author": "Phodal",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/phodal/2m/issues"
+    "url": "https://github.com/phodal/ddm/issues"
   },
-  "homepage": "https://github.com/phodal/2m#readme"
+  "homepage": "https://github.com/phodal/ddm#readme"
 }
