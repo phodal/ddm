@@ -1,27 +1,33 @@
-export function dlm() {
+export class DLM {
+  constructor() {
 
+  }
+
+  from(originObject) {
+
+    return this;
+  };
+
+  get(array) {
+
+    return this;
+  };
+
+  to(newObject) {
+    newObject.title = 'hello';
+
+    return this;
+  };
+
+  handle(field, callback) {
+
+  };
+
+  add(field, value) {
+
+  };
+
+  remove(field) {
+
+  };
 }
-
-dlm.prototype.get = function (array) {
-
-};
-
-dlm.prototype.from = function (originObject) {
-
-};
-
-dlm.prototype.to = function (newObject) {
-
-};
-
-dlm.prototype.handle = function (field, callback) {
-
-};
-
-dlm.prototype.add = function (field, value) {
-
-};
-
-dlm.prototype.remove = function (field) {
-
-};
