@@ -4,18 +4,19 @@ export class DLM {
   }
 
   from(originObject) {
-
+    this.originObject = originObject;
     return this;
   };
 
   get(array) {
-
+    this.newObjectKey = array;
     return this;
   };
 
   to(newObject) {
-    newObject.title = 'hello';
-
+    for (var key of this.newObjectKey) {
+      newObject[key] = this.originObject[key];
+    }
     return this;
   };
 
