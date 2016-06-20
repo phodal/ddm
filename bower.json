@@ -1,0 +1,24 @@
+{
+  "name": "2m",
+  "description": "Double Model",
+  "main": "index.js",
+  "authors": [
+    "Phodal"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "Model",
+    "ddd",
+    "model",
+    "design",
+    "double"
+  ],
+  "homepage": "https://github.com/phodal/2m",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
