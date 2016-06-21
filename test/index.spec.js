@@ -2,13 +2,18 @@ import expect from 'expect';
 import {DDM} from '../src';
 
 describe('get object test', () => {
-  it('should return 1 object', () => {
-    let ddm = new DDM();
-    var originObject = {
+  var originObject;
+
+  beforeEach(function() {
+    originObject = {
       title: 'hello',
       blog: 'fdsf asdf fadsf ',
       author: 'phodal'
     };
+  });
+
+  it('should return 1 object', () => {
+    let ddm = new DDM();
 
     var newObject = {};
     ddm.get(['title']).from(originObject).to(newObject);
@@ -18,11 +23,6 @@ describe('get object test', () => {
 
   it('should return correct object', () => {
     let ddm = new DDM();
-    var originObject = {
-      title: 'hello',
-      blog: 'fdsf asdf fadsf ',
-      author: 'phodal'
-    };
 
     var newObject = {};
     ddm.get(['title', 'author']).from(originObject).to(newObject);
@@ -32,11 +32,6 @@ describe('get object test', () => {
 
   it('should return all objects when get array empty', () => {
     let ddm = new DDM();
-    var originObject = {
-      title: 'hello',
-      blog: 'fdsf asdf fadsf ',
-      author: 'phodal'
-    };
 
     var newObject = {};
     ddm.get().from(originObject).to(newObject);
@@ -47,11 +42,6 @@ describe('get object test', () => {
 
   it('should return empty results when get no exist empty', () => {
     let ddm = new DDM();
-    var originObject = {
-      title: 'hello',
-      blog: 'fdsf asdf fadsf ',
-      author: 'phodal'
-    };
 
     var newObject = {};
     ddm.get(['tag']).from(originObject).to(newObject);
@@ -60,13 +50,18 @@ describe('get object test', () => {
 });
 
 describe('add object test', () => {
-  it('should return 1 object', () => {
-    let ddm = new DDM();
-    var originObject = {
+  var originObject;
+
+  beforeEach(function() {
+    originObject = {
       title: 'hello',
       blog: 'fdsf asdf fadsf ',
       author: 'phodal'
     };
+  });
+
+  it('should return 1 object', () => {
+    let ddm = new DDM();
 
     var newObject = {};
     ddm.get(['title'])
@@ -76,5 +71,16 @@ describe('add object test', () => {
     expect(newObject.tag).toBe("hello,world,linux");
     expect(newObject.title).toBe("hello");
     expect(newObject.author).toBe(undefined);
+  });
+
+  it('should cover origin object when have same key', () => {
+    let ddm = new DDM();
+
+    var newObject = {};
+    ddm.get(['title'])
+      .from(originObject)
+      .add('blog', 'hello,world,linux')
+      .to(newObject);
+    expect(newObject.blog).toBe("hello,world,linux");
   });
 });
