@@ -134,6 +134,24 @@ describe('Handle', () => {
       .to(newObject);
     expect(newObject.blog).toBe('A');
   });
+
+  it('should able to add custom multi handle event', () => {
+    let ddm = new DDM();
+
+    var newObject = {};
+
+    function handler(blog) {
+      return blog[0];
+    }
+
+    ddm.get(['title', 'blog', 'author'])
+      .from(originObject)
+      .handle("blog", handler)
+      .handle("title", handler)
+      .to(newObject);
+    expect(newObject.blog).toBe('A');
+    expect(newObject.title).toBe('h');
+  });
 });
 
 describe('Replace', () => {
@@ -147,7 +165,7 @@ describe('Replace', () => {
     };
   });
 
-  it('should able to add custom handle event', () => {
+  it('should be able to replace field', () => {
     let ddm = new DDM();
 
     var newObject = {};
@@ -158,6 +176,8 @@ describe('Replace', () => {
       .to(newObject);
     expect(newObject.description).toBe('AAAAAAAAAAAAAAA');
     expect(newObject.blog).toBe(undefined);
+
+    expect(JSON.stringify(newObject)).toBe('{"description":"AAAAAAAAAAAAAAA","title":"hello","author":"phodal"}');
   });
 });
 
@@ -180,12 +200,53 @@ describe('ReplaceWithHandle', () => {
     function handler(blog) {
       return blog[0];
     }
-    
+
     ddm.get(['title', 'blog', 'author'])
       .from(originObject)
       .replaceWithHandle("blog", "description", handler)
       .to(newObject);
     expect(newObject.description).toBe('A');
     expect(newObject.blog).toBe(undefined);
+
+    expect(JSON.stringify(newObject)).toBe('{"description":"A","title":"hello","author":"phodal"}');
+  });
+});
+
+describe('Complex', () => {
+  var originObject;
+
+  beforeEach(function() {
+    originObject = {
+      title: 'hello',
+      content: 'AAAAAAAAAAAAAAA',
+      author: 'phodal',
+      date: '2016-03-02'
+    };
+  });
+
+  it('should able to test with multi case', () => {
+    let ddm = new DDM();
+
+    var newObject = {};
+
+    function handler(blog) {
+      return blog[0];
+    }
+
+    ddm.get(['title', 'content', 'author', 'date'])
+      .from(originObject)
+      .add('tag', 'zzz')
+      .remove('title')
+      .replace('date', 'publishdate')
+      .replaceWithHandle("content", "description", handler)
+      .to(newObject);
+    expect(newObject.description).toBe('A');
+    expect(newObject.tag).toBe('zzz');
+    expect(newObject.blog).toBe(undefined);
+    expect(newObject.content).toBe(undefined);
+    expect(newObject.date).toBe(undefined);
+    expect(newObject.publishdate).toBe("2016-03-02");
+
+    expect(JSON.stringify(newObject)).toBe('{"tag":"zzz","publishdate":"2016-03-02","description":"A","author":"phodal"}');
   });
 });
