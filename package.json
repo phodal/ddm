@@ -18,7 +18,11 @@
     "url": "https://github.com/phodal/ddm.git"
   },
   "keywords": [
-    "library-boilerplate-keywords"
+    "Model",
+    "ddd",
+    "model",
+    "design",
+    "double"
   ],
   "author": "Phodal",
   "license": "MIT",

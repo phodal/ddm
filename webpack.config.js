@@ -29,7 +29,6 @@ module.exports = {
     }]
   },
   output: {
-    library: 'library-boilerplate',
     libraryTarget: 'umd'
   },
   plugins: plugins,
