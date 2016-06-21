@@ -8,4 +8,7 @@ node_js:
 notifications:
     email: false
 
+before_install: npm install -g codeclimate-test-reporter
 install: npm install
+script: npm test:cov
+after_success: codeclimate < coverage/lcov.info
