@@ -135,3 +135,32 @@ describe('Handle', () => {
     expect(newObject.blog).toBe('A');
   });
 });
+
+describe('Replace', () => {
+  var originObject;
+
+  beforeEach(function() {
+    originObject = {
+      title: 'hello',
+      blog: 'AAAAAAAAAAAAAAA',
+      author: 'phodal'
+    };
+  });
+
+  it('should able to add custom handle event', () => {
+    let ddm = new DDM();
+
+    var newObject = {};
+
+    function handler(blog) {
+      return blog[0];
+    }
+
+    ddm.get(['title', 'blog', 'author'])
+      .from(originObject)
+      .replace("blog", "description")
+      .to(newObject);
+    expect(newObject.description).toBe('AAAAAAAAAAAAAAA');
+    expect(newObject.blog).toBe(undefined);
+  });
+});

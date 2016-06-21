@@ -116,4 +116,10 @@ export class DDM {
     });
     return this;
   }
+
+  replace(originField, newField) {
+    this.objectForAdd[newField] = this.originObject[originField];
+    this.objectKeyForRemove.push(originField);
+    return this;
+  }
 }
