@@ -26,7 +26,11 @@ export class DDM {
 
     function cloneToNewObjectByKey() {
       for (var key of this.newObjectKey) {
-        newObject[key] = this.originObject[key];
+        if(this.originObject[key] !== undefined){
+          newObject[key] = this.originObject[key];
+        } else {
+          newObject[key] = "";
+        }
       }
     }
 

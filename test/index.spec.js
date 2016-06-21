@@ -44,6 +44,19 @@ describe('get object test', () => {
     expect(newObject.author).toBe("phodal");
     expect(newObject.blog).toBe("fdsf asdf fadsf ");
   });
+
+  it('should return empty results when get no exist empty', () => {
+    let ddm = new DDM();
+    var originObject = {
+      title: 'hello',
+      blog: 'fdsf asdf fadsf ',
+      author: 'phodal'
+    };
+
+    var newObject = {};
+    ddm.get(['tag']).from(originObject).to(newObject);
+    expect(newObject.tag).toBe("");
+  });
 });
 
 describe('add object test', () => {
