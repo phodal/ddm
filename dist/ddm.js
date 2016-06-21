@@ -219,6 +219,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	      this.objectKeyForRemove.push(originField);
 	      return this;
 	    }
+	  }, {
+	    key: "replaceWithHandle",
+	    value: function replaceWithHandle(originField, newField, handle) {
+	      this.objectForAdd[newField] = this.originObject[originField];
+	      this.objectKeyForRemove.push(originField);
+	      this.handleFunction.push({
+	        field: newField,
+	        handle: handle
+	      });
+	      return this;
+	    }
 	  }]);
 
 	  return DDM;

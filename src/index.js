@@ -122,4 +122,14 @@ export class DDM {
     this.objectKeyForRemove.push(originField);
     return this;
   }
+
+  replaceWithHandle(originField, newField, handle) {
+    this.objectForAdd[newField] = this.originObject[originField];
+    this.objectKeyForRemove.push(originField);
+    this.handleFunction.push({
+      field: newField,
+      handle: handle
+    });
+    return this;
+  }
 }
