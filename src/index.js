@@ -33,22 +33,22 @@ export class DDM {
 
   get(keyArray) {
     if (keyArray) {
-      this.newObjectKey = keyArray;
+      this.objectKeyFromOrigin = keyArray;
     } else {
-      this.newObjectKey = [];
+      this.objectKeyFromOrigin = [];
     }
     return this;
   };
 
   to(newObject) {
-    function cloneObjectForAdd() {
+    function cloneAddObject() {
       for (var prop in this.objectForAdd) {
         newObject[prop] = this.objectForAdd[prop];
       }
     }
 
-    function cloneToNewObjectByKey() {
-      for (var key of this.newObjectKey) {
+    function cloneObjectByKey() {
+      for (var key of this.objectKeyFromOrigin) {
         if (this.originObject[key] !== undefined) {
           newObject[key] = this.originObject[key];
         } else {
@@ -57,7 +57,7 @@ export class DDM {
       }
     }
 
-    function deepCloneObject() {
+    function deepCloneAllObject() {
       // Clone each property.
       for (var prop in this.originObject) {
         newObject[prop] = clone(this.originObject[prop]);
@@ -77,15 +77,15 @@ export class DDM {
       }
     }
 
-    var haveAddingObject = this.newObjectKey.length > 0;
+    var haveObjectFromOrigin = this.objectKeyFromOrigin.length > 0;
     var hasRemovingObject = this.objectKeyForRemove.length > 0;
     var hasExtendHandle = this.handleFunction.length > 0;
 
-    cloneObjectForAdd.call(this);
-    if (haveAddingObject) {
-      cloneToNewObjectByKey.call(this);
+    cloneAddObject.call(this);
+    if (haveObjectFromOrigin) {
+      cloneObjectByKey.call(this);
     } else {
-      deepCloneObject.call(this);
+      deepCloneAllObject.call(this);
     }
 
     if (hasRemovingObject) {
