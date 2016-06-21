@@ -90,6 +90,17 @@ ddm.get(['title', 'blog', 'author'])
 
 > {title: "hello", blog: "A", author: "phodal"}
 
+With Replace:
+
+```javascript
+ ddm.get(['title', 'blog', 'author'])
+   .from(originObject)
+   .replace("blog", "description")
+   .to(newObject);
+```
+
+> {description: "fdsf asdf fadsf ", title: "hello", author: "phodal"}
+
 DDM
 ---
 

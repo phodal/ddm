@@ -152,10 +152,6 @@ describe('Replace', () => {
 
     var newObject = {};
 
-    function handler(blog) {
-      return blog[0];
-    }
-
     ddm.get(['title', 'blog', 'author'])
       .from(originObject)
       .replace("blog", "description")

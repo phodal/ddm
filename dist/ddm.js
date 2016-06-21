@@ -212,6 +212,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	      });
 	      return this;
 	    }
+	  }, {
+	    key: "replace",
+	    value: function replace(originField, newField) {
+	      this.objectForAdd[newField] = this.originObject[originField];
+	      this.objectKeyForRemove.push(originField);
+	      return this;
+	    }
 	  }]);
 
 	  return DDM;
