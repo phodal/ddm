@@ -85,12 +85,7 @@ export class DDM {
 
     return this;
   };
-
-  handle() {
-
-    return this;
-  };
-
+  
   add(field, value) {
     this.objectForAdd[field] = value;
     return this;

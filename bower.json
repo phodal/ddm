@@ -1,7 +1,7 @@
 {
   "name": "ddm",
   "description": "Domain Double Model",
-  "main": "index.js",
+  "main": "lib/index.js",
   "authors": [
     "Phodal"
   ],
