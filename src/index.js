@@ -9,17 +9,7 @@ function clone(objectToBeCloned) {
 
   // Filter out special objects.
   var Constructor = objectToBeCloned.constructor;
-  switch (Constructor) {
-    // Implement other special objects here.
-    case RegExp:
-      objectClone = new Constructor(objectToBeCloned);
-      break;
-    case Date:
-      objectClone = new Constructor(objectToBeCloned.getTime());
-      break;
-    default:
-      objectClone = new Constructor();
-  }
+  objectClone = new Constructor();
 
   // Clone each property.
   for (var prop in objectToBeCloned) {
