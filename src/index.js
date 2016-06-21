@@ -1,4 +1,35 @@
-export class DDM {
+// https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm
+function clone(objectToBeCloned) {
+  // Basis.
+  if (!(objectToBeCloned instanceof Object)) {
+    return objectToBeCloned;
+  }
+
+  var objectClone;
+
+  // Filter out special objects.
+  var Constructor = objectToBeCloned.constructor;
+  switch (Constructor) {
+    // Implement other special objects here.
+    case RegExp:
+      objectClone = new Constructor(objectToBeCloned);
+      break;
+    case Date:
+      objectClone = new Constructor(objectToBeCloned.getTime());
+      break;
+    default:
+      objectClone = new Constructor();
+  }
+
+  // Clone each property.
+  for (var prop in objectToBeCloned) {
+    objectClone[prop] = clone(objectToBeCloned[prop]);
+  }
+
+  return objectClone;
+}
+
+export default class DDM {
   constructor() {
     this.objectForAdd = {};
     this.objectKeyForRemove = [];
@@ -65,8 +96,9 @@ export class DDM {
     return this;
   };
 
-  handle(field, callback) {
+  handle() {
 
+    return this;
   };
 
   add(field, value) {
@@ -78,35 +110,4 @@ export class DDM {
     this.objectKeyForRemove.push(field);
     return this;
   };
-}
-
-// https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm
-function clone(objectToBeCloned) {
-  // Basis.
-  if (!(objectToBeCloned instanceof Object)) {
-    return objectToBeCloned;
-  }
-
-  var objectClone;
-
-  // Filter out special objects.
-  var Constructor = objectToBeCloned.constructor;
-  switch (Constructor) {
-    // Implement other special objects here.
-    case RegExp:
-      objectClone = new Constructor(objectToBeCloned);
-      break;
-    case Date:
-      objectClone = new Constructor(objectToBeCloned.getTime());
-      break;
-    default:
-      objectClone = new Constructor();
-  }
-
-  // Clone each property.
-  for (var prop in objectToBeCloned) {
-    objectClone[prop] = clone(objectToBeCloned[prop]);
-  }
-
-  return objectClone;
 }
