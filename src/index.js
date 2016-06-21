@@ -1,4 +1,4 @@
-export class DLM {
+export class DDM {
   constructor() {
     this.objectForAddRemove = {};
   }
