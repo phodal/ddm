@@ -10,5 +10,5 @@ notifications:
 
 before_install: npm install -g codeclimate-test-reporter
 install: npm install
-script: npm test:cov
+script: babel-node ./node_modules/.bin/isparta cover ./node_modules/.bin/_mocha
 after_success: codeclimate < coverage/lcov.info
