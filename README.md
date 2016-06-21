@@ -104,13 +104,24 @@ With Replace:
 DDM
 ---
 
-Bounded Context
+ 
+对于我们的几个不同业务情景下，我们只使用同一个后台API的情形。如下图所示：
 
-![Sketch](./imgs/sketch.png)
- 
-DDM  
- 
-![DDM](./imgs/ddm.png) 
+![Domain Double Model][./imgs/ddm.png]
+
+在我们的Blog Model里，我们有``Author``、``Title``、``Slug``、``Content``、``Data``几个字段。
+
+而在我们使用的时候，我们需要依据这个模型应用到不同的场景下：
+
+ - 面向读者的Model，只有``Tag``、``Title``、``Author``、``Date``、``Content``五个字段。
+ - 面向SEO时，只有``Tag``、``Title``、``Date``、基于``Content``的``Description``四个字段。
+ - 面向RSS时，则有``Title``、``Author``、``Date``、``Content``、``Slug``五个字段。
+
+如果我们使用的是同一个模型，那么我们就很难做到分离上下文。并且在三种不同的场景下，Blog Model的含义都是不一样的。
+
+于是，我们就需要想办法去区分不同的模型——这在后台来说是一件很容易的事。但是在前台谁想这样做？在这其中使用复杂的OO思想？
+
+所以，我们有了DDM。 
 
 License
 ---
