@@ -65,6 +65,19 @@ Result:
 
 > {tag: "hello,world,linux", title: "hello"}
 
+With Custom Handle:
+
+    function handler(blog) {
+      return blog[0];
+    }
+
+    ddm.get(['title', 'blog', 'author'])
+      .from(originObject)
+      .handle("blog", handler)
+      .to(newObject);
+
+> {title: "hello", blog: "A", author: "phodal"}
+
 DDM
 ---
 
