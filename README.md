@@ -107,7 +107,7 @@ DDM
  
 对于我们的几个不同业务情景下，我们只使用同一个后台API的情形。如下图所示：
 
-![Domain Double Model][./imgs/ddm.png]
+![Domain Double Model](./imgs/ddm.png)
 
 在我们的Blog Model里，我们有``Author``、``Title``、``Slug``、``Content``、``Data``几个字段。
 
