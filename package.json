@@ -1,12 +1,12 @@
 {
-  "name": "library-boilerplate",
-  "version": "1.0.0",
-  "description": "library-boilerplate-description",
+  "name": "ddm",
+  "version": "0.1.0",
+  "description": "Domain Double Model",
   "main": "lib/index.js",
   "scripts": {
     "clean": "rimraf lib dist",
     "build": "babel src --out-dir lib",
-    "build:umd": "webpack src/index.js dist/library-boilerplate.js && NODE_ENV=production webpack src/index.js dist/library-boilerplate.min.js",
+    "build:umd": "webpack src/index.js dist/ddm.js && NODE_ENV=production webpack src/index.js dist/ddm.min.js",
     "lint": "eslint src",
     "test": "NODE_ENV=test mocha",
     "test:watch": "NODE_ENV=test mocha --watch",
@@ -15,17 +15,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/library-boilerplate-author/library-boilerplate.git"
+    "url": "https://github.com/phodal/ddm.git"
   },
   "keywords": [
     "library-boilerplate-keywords"
   ],
-  "author": "library-boilerplate-author",
+  "author": "Phodal",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/library-boilerplate-author/library-boilerplate/issues"
+    "url": "https://github.com/phodal/ddm/issues"
   },
-  "homepage": "https://github.com/library-boilerplate-author/library-boilerplate",
+  "homepage": "https://github.com/phodal/ddm",
   "devDependencies": {
     "babel": "^5.5.8",
     "babel-core": "^5.6.18",
