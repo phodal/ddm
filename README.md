@@ -88,6 +88,8 @@ ddm.get(['title', 'blog', 'author'])
   .to(newObject);
 ```
 
+Result:
+
 > {title: "hello", blog: "A", author: "phodal"}
 
 With Replace:
@@ -98,6 +100,8 @@ With Replace:
    .replace("blog", "description")
    .to(newObject);
 ```
+
+Result:
 
 > {description: "fdsf asdf fadsf ", title: "hello", author: "phodal"}
 
