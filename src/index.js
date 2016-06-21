@@ -29,7 +29,7 @@ function clone(objectToBeCloned) {
   return objectClone;
 }
 
-export default class DDM {
+export class DDM {
   constructor() {
     this.objectForAdd = {};
     this.objectKeyForRemove = [];
