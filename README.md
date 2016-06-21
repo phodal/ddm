@@ -5,40 +5,44 @@ Domain Double Model
 [![Test Coverage](https://codeclimate.com/github/phodal/ddm/badges/coverage.svg)](https://codeclimate.com/github/phodal/ddm/coverage)
 [![Code Climate](https://codeclimate.com/github/phodal/ddm/badges/gpa.svg)](https://codeclimate.com/github/phodal/ddm)
 
-> A simple library for Front-End Bounded Context Model.
+> A simple library for Front-End to create Bounded Context Model.
 
 Install
 ---
 
 Bower:
 
-    bower install ddm
+```bash
+bower install ddm
+```
     
 NPM:
     
-    npm install ddm
-    
+```bash
+npm install ddm
+```
+
 Usage
 ---
 
 Usage:
 
 ```javascript
-    var ddm = new DDM();
+var ddm = new DDM();
 
-    originObject = {
-      title: 'hello',
-      blog: 'fdsf asdf fadsf ',
-      author: 'phodal'
-    };
-    var newObject = {};
+originObject = {
+  title: 'hello',
+  blog: 'fdsf asdf fadsf ',
+  author: 'phodal'
+};
+var newObject = {};
 ```
 
 Basic Example:
     
 
 ```javascript
-    ddm.get(['title']).from(originObject).to(newObject);
+ddm.get(['title']).from(originObject).to(newObject);
 ```
 
 Result
@@ -48,10 +52,10 @@ Result
 With Remove:
 
 ```javascript
-    ddm.get(['title', 'blog', 'author'])
-      .from(originObject)
-      .remove('title')
-      .to(newObject);
+ddm.get(['title', 'blog', 'author'])
+  .from(originObject)
+  .remove('title')
+  .to(newObject);
 ```
 
 Result: 
@@ -61,10 +65,10 @@ Result:
 With Add:
 
 ```javascript
-    ddm.get(['title'])
-      .from(originObject)
-      .add('tag', 'hello,world,linux')
-      .to(newObject);
+ddm.get(['title'])
+  .from(originObject)
+  .add('tag', 'hello,world,linux')
+  .to(newObject);
 ```
 
 Result:
@@ -74,14 +78,14 @@ Result:
 With Custom Handle:
 
 ```javascript
-    function handler(blog) {
-      return blog[0];
-    }
+function handler(blog) {
+  return blog[0];
+}
 
-    ddm.get(['title', 'blog', 'author'])
-      .from(originObject)
-      .handle("blog", handler)
-      .to(newObject);
+ddm.get(['title', 'blog', 'author'])
+  .from(originObject)
+  .handle("blog", handler)
+  .to(newObject);
 ```
 
 > {title: "hello", blog: "A", author: "phodal"}
@@ -89,7 +93,11 @@ With Custom Handle:
 DDM
 ---
 
+Bounded Context
+
 ![Sketch](./imgs/sketch.png)
+ 
+DDM  
  
 ![DDM](./imgs/ddm.png) 
 
