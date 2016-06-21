@@ -1,7 +1,7 @@
 import expect from 'expect';
 import {DDM} from '../src';
 
-describe('get object test', () => {
+describe('Get', () => {
   var originObject;
 
   beforeEach(function() {
@@ -49,7 +49,7 @@ describe('get object test', () => {
   });
 });
 
-describe('add object test', () => {
+describe('Add', () => {
   var originObject;
 
   beforeEach(function() {
@@ -85,7 +85,7 @@ describe('add object test', () => {
   });
 });
 
-describe('remove object test', () => {
+describe('Remove', () => {
   var originObject;
 
   beforeEach(function() {
@@ -105,5 +105,33 @@ describe('remove object test', () => {
       .remove('title')
       .to(newObject);
     expect(newObject.title).toBe(undefined);
+  });
+});
+
+describe('Handle', () => {
+  var originObject;
+
+  beforeEach(function() {
+    originObject = {
+      title: 'hello',
+      blog: 'AAAAAAAAAAAA BBBBBBBBBBBB CCCCCCCCCCCCC DDDDDDDDDDDDDDD',
+      author: 'phodal'
+    };
+  });
+
+  it('should able to add custom handle event', () => {
+    let ddm = new DDM();
+
+    var newObject = {};
+
+    function handler(blog) {
+      return blog[0];
+    }
+
+    ddm.get(['title', 'blog', 'author'])
+      .from(originObject)
+      .handle("blog", handler)
+      .to(newObject);
+    expect(newObject.blog).toBe('A');
   });
 });

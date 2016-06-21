@@ -91,6 +91,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    this.objectForAdd = {};
 	    this.objectKeyForRemove = [];
+	    this.handleFunction = [];
 	  }
 
 	  _createClass(DDM, [{
@@ -162,10 +163,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	      }
 
-	      cloneObjectForAdd.call(this);
+	      function addExtendHandle() {
+	        for (var i = 0; i < this.handleFunction.length; i++) {
+	          var field = this.handleFunction[i].field;
+	          newObject[field] = this.handleFunction[i].handle(newObject[field]);
+	        }
+	      }
+
 	      var haveAddingObject = this.newObjectKey.length > 0;
 	      var hasRemovingObject = this.objectKeyForRemove.length > 0;
+	      var hasExtendHandle = this.handleFunction.length > 0;
 
+	      cloneObjectForAdd.call(this);
 	      if (haveAddingObject) {
 	        cloneToNewObjectByKey.call(this);
 	      } else {
@@ -174,6 +183,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	      if (hasRemovingObject) {
 	        removeObject.call(this);
+	      }
+
+	      if (hasExtendHandle) {
+	        addExtendHandle.call(this);
 	      }
 
 	      return this;
@@ -188,6 +201,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	    key: "remove",
 	    value: function remove(field) {
 	      this.objectKeyForRemove.push(field);
+	      return this;
+	    }
+	  }, {
+	    key: "handle",
+	    value: function handle(field, _handle) {
+	      this.handleFunction.push({
+	        field: field,
+	        handle: _handle
+	      });
 	      return this;
 	    }
 	  }]);

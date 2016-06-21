@@ -23,6 +23,7 @@ export class DDM {
   constructor() {
     this.objectForAdd = {};
     this.objectKeyForRemove = [];
+    this.handleFunction = [];
   }
 
   from(originObject) {
@@ -69,10 +70,18 @@ export class DDM {
       }
     }
 
-    cloneObjectForAdd.call(this);
+    function addExtendHandle() {
+      for (var i = 0; i < this.handleFunction.length; i++) {
+        var field = this.handleFunction[i].field;
+        newObject[field] = this.handleFunction[i].handle(newObject[field])
+      }
+    }
+
     var haveAddingObject = this.newObjectKey.length > 0;
     var hasRemovingObject = this.objectKeyForRemove.length > 0;
+    var hasExtendHandle = this.handleFunction.length > 0;
 
+    cloneObjectForAdd.call(this);
     if (haveAddingObject) {
       cloneToNewObjectByKey.call(this);
     } else {
@@ -83,9 +92,13 @@ export class DDM {
       removeObject.call(this);
     }
 
+    if (hasExtendHandle) {
+      addExtendHandle.call(this);
+    }
+
     return this;
   };
-  
+
   add(field, value) {
     this.objectForAdd[field] = value;
     return this;
@@ -95,4 +108,12 @@ export class DDM {
     this.objectKeyForRemove.push(field);
     return this;
   };
+
+  handle(field, handle) {
+    this.handleFunction.push({
+      field: field,
+      handle: handle
+    });
+    return this;
+  }
 }
