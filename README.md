@@ -23,6 +23,7 @@ Usage
 
 Usage:
 
+```javascript
     var ddm = new DDM();
 
     originObject = {
@@ -31,11 +32,14 @@ Usage:
       author: 'phodal'
     };
     var newObject = {};
+```
 
 Basic Example:
     
-   
+
+```javascript
     ddm.get(['title']).from(originObject).to(newObject);
+```
 
 Result
     
@@ -43,12 +47,12 @@ Result
 
 With Remove:
 
-
+```javascript
     ddm.get(['title', 'blog', 'author'])
       .from(originObject)
       .remove('title')
       .to(newObject);
-
+```
 
 Result: 
 
@@ -56,10 +60,12 @@ Result:
 
 With Add:
 
+```javascript
     ddm.get(['title'])
       .from(originObject)
       .add('tag', 'hello,world,linux')
       .to(newObject);
+```
 
 Result:
 
@@ -67,6 +73,7 @@ Result:
 
 With Custom Handle:
 
+```javascript
     function handler(blog) {
       return blog[0];
     }
@@ -75,6 +82,7 @@ With Custom Handle:
       .from(originObject)
       .handle("blog", handler)
       .to(newObject);
+```
 
 > {title: "hello", blog: "A", author: "phodal"}
 
