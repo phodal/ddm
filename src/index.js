@@ -1,6 +1,7 @@
 export class DDM {
   constructor() {
-    this.objectForAddRemove = {};
+    this.objectForAdd = {};
+    this.objectKeyForRemove = [];
   }
 
   from(originObject) {
@@ -18,15 +19,15 @@ export class DDM {
   };
 
   to(newObject) {
-    function cloneObjectForAddRemove() {
-      for (var prop in this.objectForAddRemove) {
-        newObject[prop] = this.objectForAddRemove[prop];
+    function cloneObjectForAdd() {
+      for (var prop in this.objectForAdd) {
+        newObject[prop] = this.objectForAdd[prop];
       }
     }
 
     function cloneToNewObjectByKey() {
       for (var key of this.newObjectKey) {
-        if(this.originObject[key] !== undefined){
+        if (this.originObject[key] !== undefined) {
           newObject[key] = this.originObject[key];
         } else {
           newObject[key] = "";
@@ -41,12 +42,26 @@ export class DDM {
       }
     }
 
-    cloneObjectForAddRemove.call(this);
-    if (this.newObjectKey.length > 0) {
+    function removeObject() {
+      for (var i = 0; i < this.objectKeyForRemove.length; i++) {
+        delete newObject[this.objectKeyForRemove[i]];
+      }
+    }
+
+    cloneObjectForAdd.call(this);
+    var haveAddingObject = this.newObjectKey.length > 0;
+    var hasRemovingObject = this.objectKeyForRemove.length > 0;
+
+    if (haveAddingObject) {
       cloneToNewObjectByKey.call(this);
     } else {
       deepCloneObject.call(this);
     }
+
+    if (hasRemovingObject) {
+      removeObject.call(this);
+    }
+
     return this;
   };
 
@@ -55,12 +70,13 @@ export class DDM {
   };
 
   add(field, value) {
-    this.objectForAddRemove[field] = value;
+    this.objectForAdd[field] = value;
     return this;
   };
 
   remove(field) {
-
+    this.objectKeyForRemove.push(field);
+    return this;
   };
 }
 

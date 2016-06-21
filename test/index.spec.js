@@ -84,3 +84,26 @@ describe('add object test', () => {
     expect(newObject.blog).toBe("hello,world,linux");
   });
 });
+
+describe('remove object test', () => {
+  var originObject;
+
+  beforeEach(function() {
+    originObject = {
+      title: 'hello',
+      blog: 'fdsf asdf fadsf ',
+      author: 'phodal'
+    };
+  });
+
+  it('should return 1 object', () => {
+    let ddm = new DDM();
+
+    var newObject = {};
+    ddm.get(['title', 'blog', 'author'])
+      .from(originObject)
+      .remove('title')
+      .to(newObject);
+    expect(newObject.title).toBe(undefined);
+  });
+});
