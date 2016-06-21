@@ -4,19 +4,16 @@ engines:
     enabled: true
     config:
       languages:
-      - ruby
       - javascript
-      - python
-      - php
   eslint:
     enabled: true
   fixme:
     enabled: true
 ratings:
   paths:
-  - "src/index.js"
+  - "src/*.js"
 exclude_paths:
 - test/
 - examples/
-- lib/
-- dist/
+- lib/*.js
+- dist/*.js
