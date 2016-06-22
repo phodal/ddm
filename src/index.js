@@ -24,6 +24,7 @@ export class DDM {
     this.objectForAdd = {};
     this.objectKeyForRemove = [];
     this.handleFunction = [];
+    this.originObject = {};
   }
 
   from(originObject) {
@@ -58,7 +59,6 @@ export class DDM {
     }
 
     function deepCloneAllObject() {
-      // Clone each property.
       for (var prop in this.originObject) {
         newObject[prop] = clone(this.originObject[prop]);
       }
