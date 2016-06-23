@@ -92,6 +92,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    this.objectForAdd = {};
 	    this.objectKeyForRemove = [];
 	    this.handleFunction = [];
+	    this.originObject = {};
 	  }
 
 	  _createClass(DDM, [{
@@ -151,7 +152,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 
 	      function deepCloneAllObject() {
-	        // Clone each property.
 	        for (var prop in this.originObject) {
 	          newObject[prop] = clone(this.originObject[prop]);
 	        }
