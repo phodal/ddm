@@ -1,0 +1,11 @@
+.codeclimate.yml
+.editorconfig
+.eslintignore
+.eslintrc
+.travis.yml
+webpack.config.js
+LICENSE
+test/
+src/
+imgs/
+coverage/
